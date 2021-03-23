@@ -6,7 +6,7 @@ import scifiList from '../data/scifi.json'
 import horrorList from '../data/horror.json'
 import { Button, Card, Container, Row } from 'react-bootstrap'
 
-const allList = romanceList.concat(historyList, fantasyList, scifiList, horrorList)
+const latestList = romanceList.slice(0, 3).concat(historyList.slice(0, 3), fantasyList.slice(0, 3), scifiList.slice(0, 3), horrorList.slice(0, 3)).sort((a, b) => (a.title > b.title) ? 1 : -1)
 
 class LatestRelease extends React.Component {
 
@@ -17,10 +17,10 @@ class LatestRelease extends React.Component {
   render () {
     return (
       <Container>
-        
+        <h1>Latest Release!</h1>
         <Row className="justify-content-center">
           {
-            allList.map(book => (
+            latestList.map(book => (
               <Card key={book.category + book.asin} style={{ width: '18rem' }}>
   <Card.Img variant="top" src={book.img} />
   <Card.Body>
@@ -34,7 +34,7 @@ class LatestRelease extends React.Component {
     <Card.Text>
               <small className="text-muted"><b>ASIN: </b>{book.asin}</small>
     </Card.Text>
-    <Button variant="primary">Add to cart</Button>
+    <Button variant="success">Add to cart</Button>
   </Card.Body>
 </Card>
             ))
