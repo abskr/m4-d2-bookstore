@@ -21,7 +21,7 @@ class LatestRelease extends React.Component {
         <Row className="justify-content-center">
           {
             latestList.map(book => (
-              <Card key={book.category + book.asin} style={{ width: '18rem' }}>
+              <Card className="m-3" key={book.category + book.asin} style={{ width: '18rem' }}>
   <Card.Img variant="top" src={book.img} />
   <Card.Body>
     <Card.Title>{book.title}</Card.Title>
